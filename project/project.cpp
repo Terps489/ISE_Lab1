@@ -1,5 +1,8 @@
 #include <iostream>
+#include <sstream>
+#include <fstream>
 #include <string>
+#include <vector>
 extern "C" {
     #include "ini.h"
 }
@@ -29,9 +32,21 @@ int main() {
         return 1;
     }
 
-    std::cout << "dir_start: " << cfg.dir_start << '\n';
-    std::cout << "filename:  " << cfg.filenames << '\n';
-    std::cout << "dir_end:   " << cfg.dir_end << '\n';
+    // std::cout << "dir_start: " << cfg.dir_start << '\n';
+    // std::cout << "filename:  " << cfg.filenames << '\n';
+    // std::cout << "dir_end:   " << cfg.dir_end << '\n';
+    if (cfg.filenames.empty()) {
+        std::cerr << "В конфиге нет файлов.\n";
+        return 1;
+    }
+    std::istringstream stream(cfg.filenames);
+    std::vector<std::string> filenames;
+    std::string filename;
+
+    while (stream >> filename) {
+        filenames.push_back(filename);
+    }
+    std::cout << filenames[0] << "\n";
 
     return 0;
 }
