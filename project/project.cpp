@@ -44,7 +44,7 @@ std::string dir_reader(const std::string& path) {
 
 void logic_start(std::string file_start) {
   size_t rows = 10, cols = 3;
-  std::vector<std::vector<std::string>> matrix(rows, std::vector<std::string>(cols, ""));
+  std::vector<std::vector<int>> matrix(rows, std::vector<int>(cols, -1));
   std::ifstream file(file_start);
   if (!file) {
     std::cerr << "Не удалось открыть файл\n";
@@ -54,15 +54,17 @@ void logic_start(std::string file_start) {
   size_t r = 0;
   while (r < rows && std::getline(file, line)) {
     if (line == "jump") {
-      matrix[r++][0] = "jmp";
+      r++;
       continue;
     }
     int r1, r2, r3;
     if (std::sscanf(line.c_str(), "R%d,R%d -> R%d", &r1, &r2, &r3) == 3) {
-      matrix[r][0] = std::to_string(r1);
-      matrix[r][1] = std::to_string(r2);
-      matrix[r++][2] = std::to_string(r3);
+      matrix[r][0] = r1, matrix[r][1] = r2, matrix[r++][2] = r3;
     }
+    else {
+    std::cerr << "Ошибка данных, не хехе\n";
+    return;
+  }
   }
   for (auto& row : matrix) {
     for (auto val : row) std::cout << val << " ";
