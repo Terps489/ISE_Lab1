@@ -32,4 +32,40 @@ void Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix){
 //     std::cout << "\n";
 //   }
 //   std::cout << std::endl;
+    int s[3][10];
+    s = matrix;
+    int porog = 0;
+    int r[30]; // коэффициенты сложности получения
+    int por[10];// коэффициент операции
+    int sch[30]; // коэффициенты для используемых значений
+    int cur;
+    for (int y = 0; y < 10; y++)
+    {
+        if (s[1][y] != -1)
+        {
+            porog += 10;
+            por[y] = porog;
+        }
+        else
+        {
+            por[y] = max3(porog, r[s[1][y]], r[s[0][y]]);
+            r[s[2][y]] = por[y];
+        }
+    }
+}
+int max(int i1, int i2)
+{
+    if (i1 > i2)
+    {
+        return i1;
+    }
+    return i2;
+}
+int max3(int i1, int i2, int i3)
+{
+    if (max(i1, i2) > i3)
+    {
+        return i3;
+    }
+    return max(i1, i2);
 }
