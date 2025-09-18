@@ -19,3 +19,4 @@ struct conf {
 int handler(void* user, const char* section, const char* name, const char* value);
 std::string dir_reader(const std::string& path);
 void logic_start(std::string file_start);
+void Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix);
