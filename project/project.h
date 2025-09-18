@@ -17,3 +17,4 @@ struct conf {
 
 int handler(void* user, const char* section, const char* name, const char* value);
 std::string dir_reader(const std::string& path);
+void logic_start(std::string file);

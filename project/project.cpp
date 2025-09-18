@@ -15,10 +15,8 @@ int main() {
         return 1;
     }
     std::istringstream stream(cfg.filenames);
-    std::vector<std::string> filenames;
     std::string filename;
-    while (stream >> filename) filenames.push_back(filename);
-    std::cout << filenames[0] << "\n";
+    while (stream >> filename) logic_start(filename);
     return 0;
 }
 
@@ -42,4 +40,15 @@ std::string dir_reader(const std::string& path) {
         }
     }
     return result;
+}
+
+void logic_start(std::string file){
+    size_t rows = 10, cols = 3;
+    std::vector<std::vector<std::string>> matrix(rows, std::vector<std::string>(cols, "hello"));
+    for (auto& row : matrix) {
+        for (auto val : row) std::cout << val << " ";
+        std::cout << "\n";
+    }
+    std::cout << "\n";
+    std::cout << "\n";
 }

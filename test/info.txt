@@ -1,1 +1,10 @@
-test_files
+R1,R2 -> R8
+R3,R1 -> R9
+R3,R2 -> R3
+jump
+jump
+R3,R5 -> R1
+R3,R9 -> R1
+R3,R2 -> R2
+jump
+R8,R5 -> R6
