@@ -3,6 +3,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <cstdio>
 #include <filesystem>
 extern "C" {
     #include "ini.h"
@@ -17,4 +18,4 @@ struct conf {
 
 int handler(void* user, const char* section, const char* name, const char* value);
 std::string dir_reader(const std::string& path);
-void logic_start(std::string file);
+void logic_start(std::string file_start);
