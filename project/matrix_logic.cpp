@@ -27,9 +27,9 @@ void logic_start(std::string file_start) {
 }
 
 void Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix){
-  for (auto& row : matrix) {
-    for (auto val : row) std::cout << val << " ";
-    std::cout << "\n";
-  }
-  std::cout << std::endl;
+//   for (auto& row : matrix) {
+//     for (auto val : row) std::cout << val << " ";
+//     std::cout << "\n";
+//   }
+//   std::cout << std::endl;
 }
