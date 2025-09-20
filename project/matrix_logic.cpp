@@ -180,7 +180,7 @@ void Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix){
                 buf = lvl + 1;
                 for (int i = 1; i < 10; i++)
                 {
-                    lvl = ((lvl > por[i]) && (por[i] >= buf) || (lvl <= buf)) ? por[i] : lvl;
+                    lvl = ((lvl > por[i]) && (por[i] >= buf) || (lvl <buf)) ? por[i] : lvl;
                 }
                 //lvl = por[min(por, lvl+1)];
 
