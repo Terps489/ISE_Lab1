@@ -170,6 +170,6 @@ void vivod(int s[3][10], int srt[10])
     for (int i = 0; i < 10; i++)
     {
         cur = srt[i];
-        std::cerr << "R" << s[0][cur] << " + R" << s[1][cur] << " --> " << s[2][cur];
+        std::cout << "R" << s[0][cur] << " + R" << s[1][cur] << " --> " << s[2][cur];
     }
 }
