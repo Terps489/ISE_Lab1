@@ -101,7 +101,7 @@ void Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix){
     int srt[10]; // упоряточенный массив
 
     int tic[120];
-    int kolvoproc = 10;
+    int kolvoproc = 3;
     matini(r, 30);
     matini(por, 10);
     matini(sch, 30);
@@ -180,7 +180,7 @@ void Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix){
                 buf = lvl + 1;
                 for (int i = 1; i < 10; i++)
                 {
-                    lvl = ((lvl > por[i]) && (por[i] >= buf) || (lvl <buf)) ? por[i] : lvl;
+                    lvl = ((lvl > por[i]) && (por[i] >= buf) || (lvl < buf)) ? por[i] : lvl;
                 }
                 //lvl = por[min(por, lvl+1)];
 
