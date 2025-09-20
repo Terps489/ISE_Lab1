@@ -110,6 +110,7 @@ void Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix){
         }
         serch = true;
     }
+    vivod(s, srt);
 }
 int max(int i1, int i2)
 {
