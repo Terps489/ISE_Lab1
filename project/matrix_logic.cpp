@@ -38,19 +38,77 @@ void Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix){
     int r[30]; // коэффициенты сложности получения
     int por[10];// коэффициент операции
     int sch[30]; // коэффициенты для используемых значений
+    int srt[10]; // упоряточенный массив
     int cur;
+
+    int tic[120];
+    int kolvoproc=10;
+
+
     for (int y = 0; y < 10; y++)
     {
-        if (s[1][y] != -1)
+        if (s[1][y] == -1)
         {
             porog += 10;
-            por[y] = porog;
+            por[y] = porog+1;
         }
         else
         {
-            por[y] = max3(porog, r[s[1][y]], r[s[0][y]]);
+            por[y] = max(porog, r[s[1][y]], r[s[0][y]])+1;
+            if (tic[por[y]] < kolvoproc)
+            {
+                tic[por[y]]++;
+            }
+            else
+            {
+                for (por[y]; tic[por[y]] >= kolvoproc; por[y]++);  // Поиск свободного места
+                tic[por[y]]++;
+            }
+            if (sch[s[0][y]] < por[y])
+            {
+                sch[s[0][y]] = por[y];
+            }
+            if (sch[s[1][y]] < por[y])  // максимальный уровень использования операции
+            {
+                sch[s[1][y]] = por[y];
+            }
+
+            if (por[y] <= sch[s[2][y]])  // проверка на то не уйдет ли изменение переменной выше использования её прошлого значения
+            {
+                por[y] = sch[s[2][y]] + 1;
+            }
             r[s[2][y]] = por[y];
+
+           
         }
+    }
+    int beg=0;
+    int lvl= por[min(por)];
+    bool serch = true;
+
+    for (int i = 0; i < 10; i++)
+    {
+        while (serch)
+        {
+            if (beg < 10)
+            {
+                if (por[beg] == lvl)
+                {
+                    srt[i] = beg;
+                    serch = false;
+                }
+                beg++;
+
+            }
+            else
+            {
+                beg = 0;
+                lvl = por[min(por, lvl)];
+
+            }
+
+        }
+        serch = true;
     }
 }
 int max(int i1, int i2)
@@ -61,11 +119,57 @@ int max(int i1, int i2)
     }
     return i2;
 }
-int max3(int i1, int i2, int i3)
+int max(int i1, int i2, int i3)
 {
     if (max(i1, i2) > i3)
     {
         return i3;
     }
     return max(i1, i2);
+}
+int max(int i1, int i2, int i3, int i4)
+{
+    if (max(i1, i2) > max(i3,i4))
+    {
+        return max(i3, i4);
+    }
+    return max(i1, i2);
+}
+int max(int i1, int i2, int i3, int i, int i5)
+{
+    if (max(i1, i2,i5) > max(i3, i4))
+    {
+        return max(i3, i4);
+    }
+    return max(i1, i2, i5);
+}
+int min(int q[10])
+{
+    int rez=0;
+    for (int i = 1; i < 10; i++)
+    {
+        rez = q[rez] > q[i] ? q[i] : rez;
+    }
+    return rez;
+
+}
+int min(int q[10], int porog)
+{
+    int rez=0;
+    for (int i = 1; i < 10; i++)
+    {
+        rez = ((q[rez] > q[i]) &&(q[i]>porog) || (q[rez]<=porog)) ? q[i] : rez;
+    }
+    return rez;
+}
+
+
+void vivod(int s[3][10], int srt[10])
+{
+    int cur;
+    for (int i = 0; i < 10; i++)
+    {
+        cur = srt[i];
+        std::cerr << "R" << s[0][cur] << " + R" << s[1][cur] << " --> " << s[2][cur];
+    }
 }
