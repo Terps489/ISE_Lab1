@@ -101,7 +101,7 @@ void Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix){
     int srt[10]; // упоряточенный массив
 
     int tic[120];
-    int kolvoproc = 3;
+    int kolvoproc = 3; // Количество процессоров
     matini(r, 30);
     matini(por, 10);
     matini(sch, 30);
@@ -115,6 +115,7 @@ void Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix){
         {
             porog += 10;
             por[y] = porog;
+            tic[por[y]]++;
         }
         else
         {
@@ -195,7 +196,7 @@ void Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix){
     for (int i = 0; i < 10; i++)
     {
         cur = srt[i];
-        std::cout << "R" << s[0][cur] << " + R" << s[1][cur] << " --> R" << s[2][cur] << "   Diff:" << por[cur] << "   Num:" << srt[i]+1 << '\n';
+        std::cout << "R" << s[0][cur] << " + R" << s[1][cur] << " --> R" << s[2][cur] << "   Diff:" << por[cur] << "   Num:" << srt[i] << '\n';
     }
     std::cout << '\n' << '\n';
     cur = 0;
@@ -203,5 +204,19 @@ void Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix){
     {
         cur = cur < tic[i] ? tic[i] : cur;
     }
-    std::cout << cur;
+    std::cout << "1.1) " << cur << '\n';
+    cur = 0;
+    for (int i = 0; i < 120; i++)
+    {
+        if (tic[i] != 0)
+        {
+            cur++;
+        }
+    }
+    std::cout << "1.3) " << cur << '\n';
+    double w = cur;
+    double err = (double)10 / w;
+    std::cout << "1.4) " << err;
+
+
 }
