@@ -33,7 +33,9 @@ void Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix){
 //   }
 //   std::cout << std::endl;
     int s[3][10];
-    s = matrix;
+    for (int i = 0; i < 3; i++)
+      for (int j = 0; j < 10; j++)
+       s[i][j] = matrix[i][j];
     int porog = 0;
     int r[30]; // коэффициенты сложности получения
     int por[10];// коэффициент операции
@@ -136,7 +138,7 @@ int max(int i1, int i2, int i3, int i4)
     }
     return max(i1, i2);
 }
-int max(int i1, int i2, int i3, int i, int i5)
+int max(int i1, int i2, int i3, int i4, int i5)
 {
     if (max(i1, i2,i5) > max(i3, i4))
     {
