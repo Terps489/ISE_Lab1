@@ -195,7 +195,7 @@ void Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix){
     for (int i = 0; i < 10; i++)
     {
         cur = srt[i];
-        std::cout << "R" << s[0][cur] << " + R" << s[1][cur] << " --> R" << s[2][cur] << "   Diff:" << por[cur] << "   Num:" << srt[i] << '\n';
+        std::cout << "R" << s[0][cur] << " + R" << s[1][cur] << " --> R" << s[2][cur] << "   Diff:" << por[cur] << "   Num:" << srt[i]+1 << '\n';
     }
     std::cout << '\n' << '\n';
     cur = 0;
