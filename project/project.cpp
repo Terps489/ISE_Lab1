@@ -10,7 +10,7 @@ int main() {
   // std::cout << "filename:  " << cfg.filenames << '\n';
   // std::cout << "dir_end:   " << cfg.dir_end << '\n';
   // std::cout << "use_dir: " << cfg.use_dir << '\n';
-  // std::cout << "processors_num: " << cfg.processors_num << '\n';
+  std::cout << "processors_num: " << cfg.processors_num << '\n';
   if (cfg.filenames.empty()) {
     std::cerr << "В конфиге нет файлов.\n";
     return 1;
@@ -18,7 +18,7 @@ int main() {
   std::istringstream stream(cfg.filenames);
   std::string filename;
   int processors;
-  processors = (cfg.processors_reducing = false) ? std::stoi(cfg.processors_num) : 0;
+  processors = (cfg.processors_reducing == false) ? std::stoi(cfg.processors_num) : 0;
   while (stream >> filename) logic_start(filename, &processors);
   return 0;
 }
