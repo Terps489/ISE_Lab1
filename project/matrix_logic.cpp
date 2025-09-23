@@ -33,12 +33,7 @@ void logic_start(std::string file_start,
     std::string file_name = "vivod_" + std::to_string(processor) + ".txt";
     std::filesystem::path full_path =
         std::filesystem::path(path) / file_name;
-    std::ofstream out(full_path);
-    if (!out) {
-        std::cerr << "Не удалось создать файл: " << full_path << '\n';
-        continue;
-    }
-    out.close();
+    aswer_me_pls(full_path,info_result);
   }
 }
 
@@ -238,4 +233,13 @@ int min(int q[], int porog)
         rez = ((q[rez] > q[i]) && (q[i] > porog) || (q[rez] <= porog)) ? q[i] : rez;
     }
     return rez;
+}
+
+void aswer_me_pls(std::filesystem::path path,vivod_final result){
+    std::ofstream out(path);
+    if (!out) {
+        std::cerr << "Не удалось создать файл: " << path << '\n';
+        return;
+    }
+    out.close();
 }
