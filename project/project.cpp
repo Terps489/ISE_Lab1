@@ -19,7 +19,7 @@ int main() {
   }
   std::istringstream stream(cfg.filenames);
   std::string filename;
-  //while (stream >> filename) logic_start(filename, &cfg.processors_num);
+  while (stream >> filename) logic_start(filename, cfg.processors_num);
   std::string abc{"4 3 2"};
   return 0;
 }

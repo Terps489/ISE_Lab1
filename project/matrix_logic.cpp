@@ -1,5 +1,5 @@
 #include "project.h"
-void logic_start(std::string file_start, int *proc) {
+void logic_start(std::string file_start, const std::vector <int>& proc) {
   size_t rows = 10, cols = 3;
   std::vector<std::vector<int>> matrix(rows, std::vector<int>(cols, -1));
   std::ifstream file(file_start);
@@ -23,7 +23,7 @@ void logic_start(std::string file_start, int *proc) {
     return;
   }
   }
-  Wanna_work_with_matrix(matrix, *proc);
+  for (auto processor : proc) Wanna_work_with_matrix(matrix, processor);
 }
 
 void Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix, int kolvoproc){

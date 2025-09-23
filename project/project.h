@@ -29,7 +29,7 @@ struct vivod{
 int handler(void* user, const char* section, const char* name, const char* value);
 std::string dir_reader(const std::string& path);
 void str_to_processors(bool processors_reducing, std::string string, std::vector <int>& proc);
-void logic_start(std::string file_start, int *proc);
+void logic_start(std::string file_start, const std::vector <int>& proc);
 void Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix, int kolvoproc);
 int max(int i1, int i2);
 int max(int i1, int i2, int i3);
