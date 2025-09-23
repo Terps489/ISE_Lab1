@@ -155,7 +155,7 @@ void Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix, int kolvoproc
     std::cout << "1.3) " << cur << '\n';
     double w = cur;
     double err = (double)10 / w;
-    std::cout << "1.4) " << err;
+    std::cout << "1.4) " << err << '\n';
 
 
 }
