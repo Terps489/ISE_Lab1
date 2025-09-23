@@ -10,13 +10,14 @@ int main() {
   // std::cout << "filename:  " << cfg.filenames << '\n';
   // std::cout << "dir_end:   " << cfg.dir_end << '\n';
   // std::cout << "use_dir: " << cfg.use_dir << '\n';
+  // std::cout << "processors_num: " << cfg.processors_num << '\n';
   if (cfg.filenames.empty()) {
     std::cerr << "В конфиге нет файлов.\n";
     return 1;
   }
   std::istringstream stream(cfg.filenames);
   std::string filename;
-  while (stream >> filename) logic_start(filename);
+  while (stream >> filename) logic_start(filename, &cfg.processors_num);
   return 0;
 }
 
@@ -27,6 +28,7 @@ int handler(void* user, const char* section, const char* name, const char* value
   else if (pconfig->use_dir && key == "dir_start") pconfig->dir_start = val;
   else if (key == "filename_start")pconfig->filenames = (pconfig->use_dir) ? dir_reader(pconfig->dir_start) : val;
   else if (key == "dir_end") pconfig->dir_end = val;
+  else if (key == "processors_num") pconfig->processors_num = std::stoi(val);
   else return 0;
   return 1;
 }

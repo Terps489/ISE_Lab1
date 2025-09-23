@@ -1,5 +1,5 @@
 #include "project.h"
-void logic_start(std::string file_start) {
+void logic_start(std::string file_start, int *proc) {
   size_t rows = 10, cols = 3;
   std::vector<std::vector<int>> matrix(rows, std::vector<int>(cols, -1));
   std::ifstream file(file_start);
@@ -23,71 +23,10 @@ void logic_start(std::string file_start) {
     return;
   }
   }
-  Wanna_work_with_matrix(matrix);
+  Wanna_work_with_matrix(matrix, *proc);
 }
 
-
-void matini(int q[], int l)
-{
-    for (int i = 0; i < l; i++)
-    {
-        q[i] = 0;
-    }
-}
-
-int max(int i1, int i2)
-{
-    if (i1 > i2)
-    {
-        return i1;
-    }
-    return i2;
-}
-int max(int i1, int i2, int i3)
-{
-    if (max(i1, i2) < i3)
-    {
-        return i3;
-    }
-    return max(i1, i2);
-}
-int max(int i1, int i2, int i3, int i4)
-{
-    if (max(i1, i2) < max(i3, i4))
-    {
-        return max(i3, i4);
-    }
-    return max(i1, i2);
-}
-int max(int i1, int i2, int i3, int i4, int i5)
-{
-    if (max(i1, i2, i5) < max(i3, i4))
-    {
-        return max(i3, i4);
-    }
-    return max(i1, i2, i5);
-}
-int min(int q[10])
-{
-    int rez = 0;
-    for (int i = 1; i < 10; i++)
-    {
-        rez = q[rez] > q[i] ? q[i] : rez;
-    }
-    return rez;
-
-}
-int min(int q[], int porog)
-{
-    int rez = 0;
-    for (int i = 1; i < 10; i++)
-    {
-        rez = ((q[rez] > q[i]) && (q[i] > porog) || (q[rez] <= porog)) ? q[i] : rez;
-    }
-    return rez;
-}
-
-void Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix){
+void Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix, int kolvoproc){
     int s[3][10];
     for (int i = 0; i < 3; i++)
         for (int j = 0; j < 10; j++)
@@ -101,7 +40,7 @@ void Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix){
     int srt[10]; // упоряточенный массив
 
     int tic[120];
-    int kolvoproc = 3; // Количество процессоров
+    // kolvoproc; // Количество процессоров
     matini(r, 30);
     matini(por, 10);
     matini(sch, 30);
@@ -219,4 +158,65 @@ void Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix){
     std::cout << "1.4) " << err;
 
 
+}
+
+
+void matini(int q[], int l)
+{
+    for (int i = 0; i < l; i++)
+    {
+        q[i] = 0;
+    }
+}
+
+int max(int i1, int i2)
+{
+    if (i1 > i2)
+    {
+        return i1;
+    }
+    return i2;
+}
+int max(int i1, int i2, int i3)
+{
+    if (max(i1, i2) < i3)
+    {
+        return i3;
+    }
+    return max(i1, i2);
+}
+int max(int i1, int i2, int i3, int i4)
+{
+    if (max(i1, i2) < max(i3, i4))
+    {
+        return max(i3, i4);
+    }
+    return max(i1, i2);
+}
+int max(int i1, int i2, int i3, int i4, int i5)
+{
+    if (max(i1, i2, i5) < max(i3, i4))
+    {
+        return max(i3, i4);
+    }
+    return max(i1, i2, i5);
+}
+int min(int q[10])
+{
+    int rez = 0;
+    for (int i = 1; i < 10; i++)
+    {
+        rez = q[rez] > q[i] ? q[i] : rez;
+    }
+    return rez;
+
+}
+int min(int q[], int porog)
+{
+    int rez = 0;
+    for (int i = 1; i < 10; i++)
+    {
+        rez = ((q[rez] > q[i]) && (q[i] > porog) || (q[rez] <= porog)) ? q[i] : rez;
+    }
+    return rez;
 }
