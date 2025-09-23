@@ -6,23 +6,21 @@ int main() {
     std::cerr << "Не удалось прочитать config.ini\n";
     return 1;
   }
+  for (auto a : cfg.processors_num) std::cout << a << "\n";
   // std::cout << "dir_start: " << cfg.dir_start << '\n';
   // std::cout << "filename:  " << cfg.filenames << '\n';
   // std::cout << "dir_end:   " << cfg.dir_end << '\n';
   // std::cout << "use_dir: " << cfg.use_dir << '\n';
-  std::cout << "processors_num: " << cfg.processors_num << '\n';
+  // std::cout << "processors_reducing: " << cfg.processors_reducing << '\n';
+  // std::cout << "processors_num: " << cfg.processors_num << '\n';
   if (cfg.filenames.empty()) {
     std::cerr << "В конфиге нет файлов.\n";
     return 1;
   }
   std::istringstream stream(cfg.filenames);
   std::string filename;
-  int processors;
-  processors = (cfg.processors_reducing == false) ? std::stoi(cfg.processors_num) : 0;
-  while (stream >> filename) logic_start(filename, &processors);
+  //while (stream >> filename) logic_start(filename, &cfg.processors_num);
   std::string abc{"4 3 2"};
-  int bcd = std::stoi(abc);
-  std::cout << bcd << "\n";
   return 0;
 }
 
@@ -34,7 +32,7 @@ int handler(void* user, const char* section, const char* name, const char* value
   else if (key == "filename_start")pconfig->filenames = (pconfig->use_dir) ? dir_reader(pconfig->dir_start) : val;
   else if (key == "dir_end") pconfig->dir_end = val;
   else if (key == "processors_reducing") pconfig->processors_reducing = (val == "true");
-  else if (key == "processors_num") pconfig->processors_num = val;
+  else if (key == "processors_num") str_to_processors(pconfig->processors_reducing, val, pconfig->processors_num);
   else return 0;
   return 1;
 }
@@ -48,4 +46,17 @@ std::string dir_reader(const std::string& path) {
     }
   }
   return result;
+}
+
+void str_to_processors(bool processors_reducing, std::string string, std::vector <int>& proc){
+  std::istringstream stream(string);
+  int num;
+  if (!processors_reducing){
+  while (stream >> num) proc.push_back(num);
+  }
+  else {
+    stream >> num;
+    while (num>1) proc.push_back(num--);
+  }
+  return;
 }
