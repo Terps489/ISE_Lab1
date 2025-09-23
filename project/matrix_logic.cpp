@@ -1,5 +1,6 @@
 #include "project.h"
-void logic_start(std::string file_start, const std::vector <int>& proc) {
+void logic_start(std::string file_start, 
+    const std::vector <int>& proc, std::filesystem::path path) {    
   size_t rows = 10, cols = 3;
   std::vector<std::vector<int>> matrix(rows, std::vector<int>(cols, -1));
   std::ifstream file(file_start);
@@ -23,10 +24,26 @@ void logic_start(std::string file_start, const std::vector <int>& proc) {
     return;
   }
   }
-  for (auto processor : proc) Wanna_work_with_matrix(matrix, processor);
+  std::cout << path << '\n';
+  vivod_final info_result;
+  for (auto processor : proc) {
+    std::cout << processor << '\n';
+    info_result = Wanna_work_with_matrix(matrix, processor);
+    info_result.name_file = file_start;
+    std::string file_name = "vivod_" + std::to_string(processor) + ".txt";
+    std::filesystem::path full_path =
+        std::filesystem::path(path) / file_name;
+    std::ofstream out(full_path);
+    if (!out) {
+        std::cerr << "Не удалось создать файл: " << full_path << '\n';
+        continue;
+    }
+    out.close();
+  }
 }
 
-void Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix, int kolvoproc){
+vivod_final Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix, int kolvoproc){
+    vivod_final result;
     int s[3][10];
     for (int i = 0; i < 3; i++)
         for (int j = 0; j < 10; j++)
@@ -130,7 +147,6 @@ void Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix, int kolvoproc
         serch = true;
     }
     //vivod(s, srt,por);
-
     int cur;
     for (int i = 0; i < 10; i++)
     {
@@ -142,7 +158,9 @@ void Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix, int kolvoproc
     {
         cur = cur < tic[i] ? tic[i] : cur;
     }
-    std::cout << "1.1) " << cur << '\n';
+    result.par_degree = cur;
+    result.time_cons = 10;
+    // std::cout << "1.1) " << cur << '\n';
     cur = 0;
     for (int i = 0; i < 120; i++)
     {
@@ -151,11 +169,14 @@ void Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix, int kolvoproc
             cur++;
         }
     }
-    std::cout << "1.3) " << cur << '\n';
+    // std::cout << "1.3) " << cur << '\n';
+    result.time_par = cur;
     double w = cur;
     double err = (double)10 / w;
-    std::cout << "1.4) " << err << '\n';
+    // std::cout << "1.4) " << err << '\n';
+    result.c_percent = err;
     std::cout << '\n' << '\n';
+    return result;
 }
 
 
