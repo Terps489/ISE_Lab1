@@ -14,7 +14,8 @@ struct conf {
     std::string dir_start;
     std::string filenames;
     std::string dir_end;
-    int processors_num;
+    bool processors_reducing;
+    std::string processors_num;
 };
 
 struct vivod{

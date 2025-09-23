@@ -17,7 +17,9 @@ int main() {
   }
   std::istringstream stream(cfg.filenames);
   std::string filename;
-  while (stream >> filename) logic_start(filename, &cfg.processors_num);
+  int processors;
+  processors = (cfg.processors_reducing = false) ? std::stoi(cfg.processors_num) : 0;
+  while (stream >> filename) logic_start(filename, &processors);
   return 0;
 }
 
@@ -28,7 +30,8 @@ int handler(void* user, const char* section, const char* name, const char* value
   else if (pconfig->use_dir && key == "dir_start") pconfig->dir_start = val;
   else if (key == "filename_start")pconfig->filenames = (pconfig->use_dir) ? dir_reader(pconfig->dir_start) : val;
   else if (key == "dir_end") pconfig->dir_end = val;
-  else if (key == "processors_num") pconfig->processors_num = std::stoi(val);
+  else if (key == "processors_reducing") pconfig->processors_reducing = (val == "true");
+  else if (key == "processors_num") pconfig->processors_num = val;
   else return 0;
   return 1;
 }
