@@ -19,7 +19,7 @@ add_custom_target(run ALL
 )
 
 add_custom_target(clear
-    COMMAND rm -rf build/* CMakeCache.txt *.cmake Makefile CMakeFiles/
+    COMMAND rm -rf build/* CMakeCache.txt *.cmake Makefile CMakeFiles/ result/
     COMMAND echo "Build directory cleaned!"
 )
 

@@ -27,9 +27,9 @@ void logic_start(std::string file_start,
   std::cout << path << '\n';
   vivod_final info_result;
   for (auto processor : proc) {
-    std::cout << processor << '\n';
     info_result = Wanna_work_with_matrix(matrix, processor);
     info_result.name_file = file_start;
+    info_result.proc_num = processor;
     std::string file_name = "vivod_" + std::to_string(processor) + ".txt";
     std::filesystem::path full_path =
         std::filesystem::path(path) / file_name;
@@ -243,6 +243,7 @@ void aswer_me_pls(std::filesystem::path path, const vivod_final& result) {
     }
     out << "=== Результаты Работы проекта  === \n" ;
     out << "Имя файла: " << result.name_file << '\n';
+    out << "Количество доступных процессоров: " << result.proc_num << '\n';
     out << "Степень параллельности потока команд: " << result.par_degree << '\n';
     out << "Время выполнения последовательной программы в условных единицах: " << result.time_cons << '\n';
     out << "Время выполнения параллельной программы в условных единицах: " << result.time_par << '\n';

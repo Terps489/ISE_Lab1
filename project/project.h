@@ -20,6 +20,7 @@ struct conf {
 
 struct vivod_final{
     std::string name_file;
+    int proc_num;
     int par_degree;
     int time_cons;
     int time_par;
