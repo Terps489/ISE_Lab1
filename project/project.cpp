@@ -6,7 +6,7 @@ int main() {
     std::cerr << "Не удалось прочитать config.ini\n";
     return 1;
   }
-  for (auto a : cfg.processors_num) std::cout << a << "\n";
+  // for (auto a : cfg.processors_num) std::cout << a << "\n";
   // std::cout << "dir_start: " << cfg.dir_start << '\n';
   // std::cout << "filename:  " << cfg.filenames << '\n';
   // std::cout << "dir_end:   " << cfg.dir_end << '\n';

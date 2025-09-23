@@ -137,7 +137,6 @@ void Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix, int kolvoproc
         cur = srt[i];
         std::cout << "R" << s[0][cur] << " + R" << s[1][cur] << " --> R" << s[2][cur] << "   Diff:" << por[cur] << "   Num:" << srt[i] << '\n';
     }
-    std::cout << '\n' << '\n';
     cur = 0;
     for (int i = 0; i < 120; i++)
     {
@@ -156,8 +155,7 @@ void Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix, int kolvoproc
     double w = cur;
     double err = (double)10 / w;
     std::cout << "1.4) " << err << '\n';
-
-
+    std::cout << '\n' << '\n';
 }
 
 
