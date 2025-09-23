@@ -67,3 +67,18 @@ void str_to_processors(bool processors_reducing, std::string string, std::vector
   }
   return;
 }
+
+void aswer_me_pls(std::filesystem::path path, const vivod_final& result) {
+    std::ofstream out(path);
+    if (!out) {
+        std::cerr << "Не удалось создать файл: " << path << '\n';
+        return;
+    }
+    out << "=== Результаты Работы проекта  === \n" ;
+    out << "Имя файла: " << result.name_file << '\n';
+    out << "Количество доступных процессоров: " << result.proc_num << '\n';
+    out << "Степень параллельности потока команд: " << result.par_degree << '\n';
+    out << "Время выполнения последовательной программы в условных единицах: " << result.time_cons << '\n';
+    out << "Время выполнения параллельной программы в условных единицах: " << result.time_par << '\n';
+    out << "Коэффициент роста производительности: " << result.c_percent << '\n';
+}
