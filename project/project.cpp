@@ -20,6 +20,9 @@ int main() {
   int processors;
   processors = (cfg.processors_reducing == false) ? std::stoi(cfg.processors_num) : 0;
   while (stream >> filename) logic_start(filename, &processors);
+  std::string abc{"4 3 2"};
+  int bcd = std::stoi(abc);
+  std::cout << bcd << "\n";
   return 0;
 }
 
