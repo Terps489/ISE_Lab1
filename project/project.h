@@ -39,5 +39,5 @@ int max(int i1, int i2, int i3, int i4);
 int max(int i1, int i2, int i3, int i4, int i5);
 int min(int q[10]);
 int min(int q[10], int porog);
-void vivod(int s[3][10], int srt[10]);
+void vivod(int s[3][10], int srt[10], int por[10]);
 void matini(int q[], int l);

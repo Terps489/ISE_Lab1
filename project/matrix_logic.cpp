@@ -141,14 +141,8 @@ vivod_final Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix, int ko
         }
         serch = true;
     }
-    //vivod(s, srt,por);
-    int cur;
-    for (int i = 0; i < 10; i++)
-    {
-        cur = srt[i];
-        std::cout << "R" << s[0][cur] << " + R" << s[1][cur] << " --> R" << s[2][cur] << "   Diff:" << por[cur] << "   Num:" << srt[i] << '\n';
-    }
-    cur = 0;
+    vivod(s, srt,por);
+    int cur = 0;
     for (int i = 0; i < 120; i++)
     {
         cur = cur < tic[i] ? tic[i] : cur;
@@ -172,4 +166,14 @@ vivod_final Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix, int ko
     result.c_percent = err;
     std::cout << '\n' << '\n';
     return result;
+}
+
+void vivod(int s[3][10], int srt[10], int por[10]){
+    for (int i = 0; i < 9; i++)
+    {
+        (s[0][srt[i]] == -1) ? std::cout << "jump" :
+            std::cout << "R" << s[0][srt[i]] << ",R" << s[1][srt[i]] << " -> R" << s[2][srt[i]] /*<< "   Diff:" << por[srt[i]]*/;
+        (por[srt[i]] == por[srt[i+1]]) ? std::cout << "\t" :  std::cout <<"\n";
+    }
+    std::cout << "R" << s[0][srt[9]] << ",R" << s[1][srt[9]] << " -> R" << s[2][srt[9]] << std::endl;
 }
