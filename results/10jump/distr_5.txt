@@ -1,0 +1,12 @@
+=== Отрисовка проекта  === 
+proc 1		proc 2		proc 3		proc 4		proc 5		
+jump
+jump
+jump
+jump
+jump
+jump
+jump
+jump
+jump
+jump
