@@ -31,7 +31,7 @@ int main() {
   return 0;
 }
 
-int handler(void* user, const char* section, const char* name, const char* value) {
+int handler(void* user, const char* section, const char* name, const char* value){
   conf* pconfig = (conf*)user;
   std::string key = name, val = value;
   if (key == "use_dir") pconfig->use_dir = (val == "true");
@@ -83,13 +83,21 @@ void aswer_me_pls(std::filesystem::path path, const vivod_final& result) {
     out << "Коэффициент роста производительности: " << result.c_percent << '\n';
 }
 
-void vivod(int s[3][10], int srt[10], int por[10]){
-    for (int i = 0; i < 9; i++)
-    {
-        (s[0][srt[i]] == -1) ? std::cout << "jump" :
-            std::cout << "R" << s[0][srt[i]] << ",R" << s[1][srt[i]] << " -> R" << s[2][srt[i]] /*<< "   Diff:" << por[srt[i]]*/;
-        (por[srt[i]] == por[srt[i+1]]) ? std::cout << "\t" :  std::cout <<"\n";
+void draw_me_pls(std::filesystem::path path, int s[3][10], int srt[10], int por[10], int proc){
+    std::ofstream out(path);
+    if (!out) {
+        std::cerr << "Не удалось создать файл: " << path << '\n';
+        return;
     }
-    (s[0][srt[9]] == -1) ? std::cout << "jump" :
-        std::cout << "R" << s[0][srt[9]] << ",R" << s[1][srt[9]] << " -> R" << s[2][srt[9]] << std::endl;
+    out << "=== Отрисовка проекта  === \n" ;
+    for (int i = 1; i <= proc; i++) out << "proc " << i << "\t\t";
+    out << "\n";
+  for (int i = 0; i < 9; i++)
+    {
+        (s[0][srt[i]] == -1) ? out << "jump" :
+            out << "R" << s[0][srt[i]] << ",R" << s[1][srt[i]] << " -> R" << s[2][srt[i]];
+        (por[srt[i]] == por[srt[i+1]]) ? out << "\t" :  out <<"\n";
+    }
+    (s[0][srt[9]] == -1) ? out << "jump" :
+        out << "R" << s[0][srt[9]] << ",R" << s[1][srt[9]] << " -> R" << s[2][srt[9]] << std::endl;
 }

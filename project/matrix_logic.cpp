@@ -30,10 +30,14 @@ void logic_start(std::string file_start,
     info_result = Wanna_work_with_matrix(matrix, processor);
     info_result.name_file = file_start;
     info_result.proc_num = processor;
+    std::string img_name = "distr_" + std::to_string(processor) + ".txt";
     std::string file_name = "vivod_" + std::to_string(processor) + ".txt";
-    std::filesystem::path full_path =
+    std::filesystem::path full_path_ans =
         std::filesystem::path(path) / file_name;
-    aswer_me_pls(full_path,info_result);
+    std::filesystem::path full_path_img =
+        std::filesystem::path(path) / img_name;
+    aswer_me_pls(full_path_ans, info_result);
+    draw_me_pls(full_path_img, info_result.s, info_result.srt, info_result.por, info_result.proc_num);
   }
 }
 
@@ -47,7 +51,7 @@ vivod_final Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix, int ko
     //vivod(s);
     int porog = 0;
     int r[30]; // коэффициенты сложности получения
-    int por[11];// коэффициент операции
+    int por[10];// коэффициент операции
     int sch[30]; // коэффициенты для используемых значений
     int srt[10]; // упоряточенный массив
 
@@ -141,10 +145,9 @@ vivod_final Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix, int ko
         }
         serch = true;
     }
-    result.s = s;
-    result.srt = srt;
-    result.por = por;
-    vivod(s, srt,por);
+    std::memcpy(result.s, s, sizeof(s));
+    std::memcpy(result.srt, srt, sizeof(srt));
+    std::memcpy(result.por, por, sizeof(por));
     int cur = 0;
     for (int i = 0; i < 120; i++)
     {
