@@ -82,3 +82,13 @@ void aswer_me_pls(std::filesystem::path path, const vivod_final& result) {
     out << "Время выполнения параллельной программы в условных единицах: " << result.time_par << '\n';
     out << "Коэффициент роста производительности: " << result.c_percent << '\n';
 }
+
+void vivod(int s[3][10], int srt[10], int por[10]){
+    for (int i = 0; i < 9; i++)
+    {
+        (s[0][srt[i]] == -1) ? std::cout << "jump" :
+            std::cout << "R" << s[0][srt[i]] << ",R" << s[1][srt[i]] << " -> R" << s[2][srt[i]] /*<< "   Diff:" << por[srt[i]]*/;
+        (por[srt[i]] == por[srt[i+1]]) ? std::cout << "\t" :  std::cout <<"\n";
+    }
+    std::cout << "R" << s[0][srt[9]] << ",R" << s[1][srt[9]] << " -> R" << s[2][srt[9]] << std::endl;
+}

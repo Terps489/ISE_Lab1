@@ -21,7 +21,11 @@ add_custom_target(run ALL
 
 add_custom_target(clear
     COMMAND rm -rf build/* CMakeCache.txt *.cmake Makefile CMakeFiles/ results/
-    COMMAND echo "Build directory cleaned!"
+)
+
+add_custom_target(clean_test
+    COMMAND rm -rf results/
+    COMMAND echo "results directory cleaned!"
 )
 
 add_custom_target(git
