@@ -47,7 +47,7 @@ vivod_final Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix, int ko
     //vivod(s);
     int porog = 0;
     int r[30]; // коэффициенты сложности получения
-    int por[10];// коэффициент операции
+    int por[11];// коэффициент операции
     int sch[30]; // коэффициенты для используемых значений
     int srt[10]; // упоряточенный массив
 
