@@ -25,6 +25,9 @@ struct vivod_final{
     int time_cons;
     int time_par;
     double c_percent;
+    int s[3][10];
+    int srt[10];
+    int por[10];
 };
 
 int handler(void* user, const char* section, const char* name, const char* value);

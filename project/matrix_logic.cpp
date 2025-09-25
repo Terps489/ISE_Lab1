@@ -141,6 +141,9 @@ vivod_final Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix, int ko
         }
         serch = true;
     }
+    result.s = s;
+    result.srt = srt;
+    result.por = por;
     vivod(s, srt,por);
     int cur = 0;
     for (int i = 0; i < 120; i++)
