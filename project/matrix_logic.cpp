@@ -20,11 +20,17 @@ void logic_start(std::string file_start,
       matrix[r][0] = r1, matrix[r][1] = r2, matrix[r++][2] = r3;
     }
     else {
-    std::cerr << "Ошибка данных, не хехе\n";
+    std::cerr << "Ошибка данных в строке " << line << " файла " << file_start <<  ", не хехе\n";
     return;
   }
   }
-  std::cout << path << '\n';
+  if (r < 10) {
+    std::cerr << "Ошибка количества данных в файле " << file_start <<  ", не хехе\n";
+    return;
+  }
+    if (!std::filesystem::exists(path)) 
+     std::filesystem::create_directories(path);
+//   std::cout << path << '\n';
   vivod_final info_result;
   for (auto processor : proc) {
     info_result = Wanna_work_with_matrix(matrix, processor);
@@ -170,6 +176,6 @@ vivod_final Wanna_work_with_matrix(std::vector<std::vector<int>>& matrix, int ko
     double err = (double)10 / w;
     // std::cout << "1.4) " << err << '\n';
     result.c_percent = err;
-    std::cout << '\n' << '\n';
+    // std::cout << '\n' << '\n';
     return result;
 }

@@ -23,7 +23,7 @@ add_custom_target(clear
     COMMAND rm -rf build/* CMakeCache.txt *.cmake Makefile CMakeFiles/ results/
 )
 
-add_custom_target(clean_test
+add_custom_target(antitest
     COMMAND rm -rf results/
     COMMAND echo "results directory cleaned!"
 )

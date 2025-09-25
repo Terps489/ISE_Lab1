@@ -24,8 +24,6 @@ int main() {
      std::string base_name = file_path.stem().string();
      std::filesystem::path target_dir = 
      std::filesystem::path(cfg.dir_end) / base_name;
-     if (!std::filesystem::exists(target_dir)) 
-     std::filesystem::create_directories(target_dir);
      logic_start(filename, cfg.processors_num, target_dir);
   }
   return 0;
