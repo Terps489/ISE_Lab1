@@ -19,5 +19,4 @@ Makefile
 .vscode/
 *.cbp
 
-Dockerfile
 *.tar
