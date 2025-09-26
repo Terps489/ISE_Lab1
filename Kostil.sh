@@ -5,4 +5,5 @@ if [ -d "/app/.git" ]; then
 else
     git clone -b develop https://github.com/Terps489/ISE_Lab1.git /app
 fi
-exec "$@"
+
+exec bash
