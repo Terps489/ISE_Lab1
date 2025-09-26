@@ -10,7 +10,7 @@ void logic_start(std::string file_start,
   }
   std::string line;
   size_t r = 0;
-  while (r < rows && std::getline(file, line)) {
+  while (std::getline(file, line)) {
     if (line == "jump") {
       r++;
       continue;
@@ -24,7 +24,7 @@ void logic_start(std::string file_start,
     return;
   }
   }
-  if (r < 10) {
+  if (r != 10) {
     std::cerr << "Ошибка количества данных в файле " << file_start <<  ", не хехе\n";
     return;
   }
