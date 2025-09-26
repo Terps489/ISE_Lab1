@@ -16,11 +16,12 @@ void logic_start(std::string file_start,
       continue;
     }
     int r1, r2, r3;
-    if (std::sscanf(line.c_str(), "R%d,R%d -> R%d", &r1, &r2, &r3) == 3) {
+    char test;
+    if (std::sscanf(line.c_str(), "R%d,R%d -> R%d %c", &r1, &r2, &r3, &test) == 3) {
       matrix[r][0] = r1, matrix[r][1] = r2, matrix[r++][2] = r3;
     }
     else {
-    std::cerr << "Ошибка данных в строке " << line << " файла " << file_start <<  ", не хехе\n";
+    std::cerr << "Ошибка данных в строке \"" << line << "\" файла " << file_start <<  ", не хехе\n";
     return;
   }
   }
