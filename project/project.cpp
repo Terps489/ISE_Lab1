@@ -90,12 +90,11 @@ void draw_me_pls(std::filesystem::path path, int s[3][10], int srt[10], int por[
     out << "=== Отрисовка проекта  === \n" ;
     for (int i = 1; i <= proc; i++) out << "proc " << i << "\t\t";
     out << "\n";
-  for (int i = 0; i < 9; i++)
-    {
-        (s[0][srt[i]] == -1) ? out << "jump" :
-            out << "R" << s[0][srt[i]] << ",R" << s[1][srt[i]] << " -> R" << s[2][srt[i]];
-        (por[srt[i]] == por[srt[i+1]]) ? out << "\t" :  out <<"\n";
-    }
-    (s[0][srt[9]] == -1) ? out << "jump" :
-        out << "R" << s[0][srt[9]] << ",R" << s[1][srt[9]] << " -> R" << s[2][srt[9]] << std::endl;
+  for (int i = 0; i < 10; i++){
+  int index = srt[i];
+  if (s[0][index] == -1) out << "jump";
+  else out << "R" << s[0][index] << ",R" << s[1][index] << " -> R" << s[2][index];
+  if (i < 9 && por[index] == por[srt[i+1]] && s[0][index] != -1) out << "\t";
+  else out << "\n";
+  }
 }
