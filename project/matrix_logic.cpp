@@ -11,6 +11,7 @@ void logic_start(std::string file_start,
   std::string line;
   size_t r = 0;
   while (std::getline(file, line)) {
+    if (line.empty()) continue;
     if (line == "jump") {
       r++;
       continue;
